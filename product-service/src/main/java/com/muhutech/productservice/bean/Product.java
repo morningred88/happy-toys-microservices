@@ -1,10 +1,29 @@
 package com.muhutech.productservice.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "product")
 public class Product {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int prodId=1;
+	
+	@Column (nullable=false)
 	private String name="default";
+	
+	@Column (nullable=false)
 	private String description="default description";
+	
+	@Column (nullable=false)
 	private int catId=2;		
+	
 	
 	public Product() {
 		super();
