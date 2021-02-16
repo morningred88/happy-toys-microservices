@@ -1,52 +1,56 @@
 package com.muhutech.productservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.muhutech.productservice.bean.Product;
-import com.muhutech.productservice.configuration.Configuration;
-import com.muhutech.productservice.service.ProductService;
+import com.muhutech.productservice.entity.Product;
+import com.muhutech.productservice.repository.ProductRepository;
 
 
 @RestController
 public class ProductController {
 	
 	@Autowired
-	private Configuration configuration;
+	private ProductRepository productRepository;
 
-	@Autowired
-	private ProductService productService;
     
-	@RequestMapping("/product")
-	public Product retrieveProduct(@PathVariable int prodId) {
-		
-		Product product = new Product(prodId);		
-		
-		return product;		
+	@GetMapping("/product/{id}")
+	public Product getProduct(@PathVariable("id") String prodId) {
+						
+	return productRepository.getProductById(prodId);		
 		
 	}
 
 
-	@RequestMapping(value = "/product", method = RequestMethod.POST)
+	@PostMapping(value = "/product")
 	public Product saveProduct(@RequestBody Product product) {
 
-		return productService.save(product);
+		return productRepository.addProduct(product);
 
 	}
 	
-//	@RequestMapping("/product")
-//	public Product retrieveProduct() {
-//
-//		int prodId = configuration.getProdId();
-//
-//		Product product = new Product(prodId);
-//
-//		return product;
-//
-//	}
+	@DeleteMapping("/product/{id}")
+	public String deleteProduct(@PathVariable("id") String prodId) {
+		
+		return productRepository.deleteProduct(prodId);
+		
+	}
+	
+	@PutMapping("/product/{id}")
+	public String updateProduct(@PathVariable("id") String prodId, @RequestBody Product product) {
+		
+		return productRepository.update(prodId, product);
+		
+		
+	}
+
 
 }

@@ -1,4 +1,4 @@
-package com.muhutech.productservice.configuration;
+package com.muhutech.productservice.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
