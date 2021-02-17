@@ -1,5 +1,8 @@
-product-service:
-  prodId: 3
+product:
+  accesskey: accesskey
+  secretKey: secretKey
+  signingRegion: us-east-1
+  dynamoDBEndpoint: dynamodb.us-east-1.amazonaws.com
 management:
   endpoints:
     web:
