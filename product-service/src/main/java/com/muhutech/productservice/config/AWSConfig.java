@@ -27,7 +27,7 @@ public class AWSConfig {
 		return new DynamoDBMapper(buildAmazonDynamoDB());
 	}
 	
-	@Bean
+	//@Bean
 	public AmazonS3 s3(){
 		
 		return AmazonS3ClientBuilder

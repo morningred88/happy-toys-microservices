@@ -1,4 +1,4 @@
-package com.muhutech.productservice.filestore;
+package com.muhutech.productservice.repository;
 
 import java.io.InputStream;
 import java.util.Map;
@@ -12,7 +12,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 
 public class ImageStore {
 
-	@Autowired
+	//@Autowired
 	private AmazonS3 s3;
 
 	public void save(String path, String fileName, InputStream InputStream,

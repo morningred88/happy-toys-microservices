@@ -13,7 +13,7 @@ import com.muhutech.productservice.service.ProductImageService;
 @RestController
 public class ProductImageController {
 	
-	@Autowired
+//	@Autowired
 	private ProductImageService productImageService;
 	
 	@PostMapping(
